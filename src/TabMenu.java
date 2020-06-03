@@ -11,148 +11,140 @@ import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
 
 public class TabMenu {
+    int priceOrder = 0;
     Pane pane = new Pane();
+
     public Pane getPane() {
         tabMenu();
         return pane;
     }
-    int priceOrder = 0;
+
     public void tabMenu() {
         VBox vbox = new VBox();
-        HBox hbox = new HBox();
-        TextField text = new TextField();
-        Text cost = new Text();
-        Button button = new Button("Добавить к заказу");
+        HBox hboxMenu = new HBox();
+        HBox hboxHamburger = new HBox();
+        HBox hboxCheeseburger = new HBox();
+        HBox hboxMcChicken = new HBox();
+        HBox hboxBigTasty = new HBox();
+        HBox hboxFrenchFries = new HBox();
+        HBox hboxPotatoInRusticWay = new HBox();
+        HBox hboxCocaCola = new HBox();
+        HBox hboxFanta = new HBox();
+        TextField selectedFood = new TextField();
+        Text textPriceOrder = new Text();
+        Button buttonAddToOrder = new Button("Добавить к заказу");
 
-        CheckBox checkBox1 = new CheckBox();
-        CheckBox checkBox2 = new CheckBox();
-        CheckBox checkBox3 = new CheckBox();
-        CheckBox checkBox4 = new CheckBox();
-        CheckBox checkBox5 = new CheckBox();
-        CheckBox checkBox6 = new CheckBox();
-        CheckBox checkBox7 = new CheckBox();
-        CheckBox checkBox8 = new CheckBox();
-
-        HBox hbox1 = new HBox();
-        HBox hbox2 = new HBox();
-        HBox hbox3 = new HBox();
-        HBox hbox4 = new HBox();
-        HBox hbox5 = new HBox();
-        HBox hbox6 = new HBox();
-        HBox hbox7 = new HBox();
-        HBox hbox8 = new HBox();
-
-        checkBox1.setText("Гамбургер");
-        checkBox2.setText("Чизбургер");
-        checkBox3.setText("МакЧикен");
-        checkBox4.setText("Биг Тейсти");
-        checkBox5.setText("Картофель фри");
-        checkBox6.setText("Картофель по-деревенски");
-        checkBox7.setText("Coca-Cola");
-        checkBox8.setText("Fanta");
+        CheckBox checkBoxHamburger = new CheckBox("Гамбургер");
+        CheckBox checkBoxCheeseburger = new CheckBox("Чизбургер");
+        CheckBox checkBoxMcChicken = new CheckBox("МакЧикен");
+        CheckBox checkBoxBigTasty = new CheckBox("Биг Тейсти");
+        CheckBox checkBoxFrenchFries = new CheckBox("Картофель фри");
+        CheckBox checkBoxPotatoInRusticWay = new CheckBox("Картофель по-деревенски");
+        CheckBox checkBoxCocaCola = new CheckBox("Coca-Cola");
+        CheckBox checkBoxFanta = new CheckBox("Fanta");
 
         pane.getChildren().add(vbox);
-
         vbox.setPadding(new Insets(10, 30, 10, 30));
         vbox.setSpacing(20);
         vbox.getChildren().add(new Text("Меню"));
-        vbox.getChildren().add(hbox);
-        hbox.setSpacing(20);
-        hbox.getChildren().add(text);
-        hbox.getChildren().add(cost);
-        vbox.getChildren().add(button);
+        vbox.getChildren().add(hboxMenu);
+        hboxMenu.setSpacing(20);
+        hboxMenu.getChildren().add(selectedFood);
+        hboxMenu.getChildren().add(textPriceOrder);
+        vbox.getChildren().add(buttonAddToOrder);
 
-        button.setOnAction(new EventHandler<ActionEvent>() {
+        buttonAddToOrder.setOnAction(new EventHandler<ActionEvent>() {
             public void handle(ActionEvent event) {
                 boolean textHasBeenFound = false;
-                if (checkBox1.getText().equals(text.getText())) {
-                    checkBox1.fire();
+                if (checkBoxHamburger.getText().equals(selectedFood.getText())) {
+                    checkBoxHamburger.fire();
                     textHasBeenFound = true;
                     priceOrder += 20;
-                    text.clear();
+                    selectedFood.clear();
                 }
 
-                if (checkBox2.getText().equals(text.getText())) {
-                    checkBox2.fire();
+                if (checkBoxCheeseburger.getText().equals(selectedFood.getText())) {
+                    checkBoxCheeseburger.fire();
                     textHasBeenFound = true;
                     priceOrder += 25;
-                    text.clear();
+                    selectedFood.clear();
                 }
 
-                if (checkBox3.getText().equals(text.getText())) {
-                    checkBox3.fire();
+                if (checkBoxMcChicken.getText().equals(selectedFood.getText())) {
+                    checkBoxMcChicken.fire();
                     textHasBeenFound = true;
                     priceOrder += 30;
-                    text.clear();
+                    selectedFood.clear();
                 }
 
-                if (checkBox4.getText().equals(text.getText())) {
-                    checkBox4.fire();
+                if (checkBoxBigTasty.getText().equals(selectedFood.getText())) {
+                    checkBoxBigTasty.fire();
                     textHasBeenFound = true;
                     priceOrder += 40;
-                    text.clear();
+                    selectedFood.clear();
                 }
 
-                if (checkBox5.getText().equals(text.getText())) {
-                    checkBox5.fire();
+                if (checkBoxFrenchFries.getText().equals(selectedFood.getText())) {
+                    checkBoxFrenchFries.fire();
                     textHasBeenFound = true;
                     priceOrder += 15;
-                    text.clear();
+                    selectedFood.clear();
                 }
 
-                if (checkBox6.getText().equals(text.getText())) {
-                    checkBox6.fire();
+                if (checkBoxPotatoInRusticWay.getText().equals(selectedFood.getText())) {
+                    checkBoxPotatoInRusticWay.fire();
                     textHasBeenFound = true;
                     priceOrder += 20;
-                    text.clear();
+                    selectedFood.clear();
                 }
 
-                if (checkBox7.getText().equals(text.getText())) {
-                    checkBox7.fire();
+                if (checkBoxCocaCola.getText().equals(selectedFood.getText())) {
+                    checkBoxCocaCola.fire();
                     textHasBeenFound = true;
                     priceOrder += 25;
-                    text.clear();
+                    selectedFood.clear();
                 }
 
-                if (checkBox8.getText().equals(text.getText())) {
-                    checkBox8.fire();
+                if (checkBoxFanta.getText().equals(selectedFood.getText())) {
+                    checkBoxFanta.fire();
                     textHasBeenFound = true;
                     priceOrder += 20;
-                    text.clear();
+                    selectedFood.clear();
                 }
-                cost.setText("Стоимость заказа: " + priceOrder + "$.");
+
+                textPriceOrder.setText("Стоимость заказа: " + priceOrder + "$.");
 
                 if (!textHasBeenFound){
                     Alert warning = new Alert(Alert.AlertType.ERROR);
                     warning.setContentText("Такого варианта нет!");
                     warning.show();
-                    text.clear();
+                    selectedFood.clear();
                 }
             }
         });
-        vbox.getChildren().add(hbox1);
-        hbox1.getChildren().add(checkBox1);
-        hbox1.getChildren().add(new Text(" - 20$"));
-        vbox.getChildren().add(hbox2);
-        hbox2.getChildren().add(checkBox2);
-        hbox2.getChildren().add(new Text(" - 25$"));
-        vbox.getChildren().add(hbox3);
-        hbox3.getChildren().add(checkBox3);
-        hbox3.getChildren().add(new Text(" - 30$"));
-        vbox.getChildren().add(hbox4);
-        hbox4.getChildren().add(checkBox4);
-        hbox4.getChildren().add(new Text(" - 40$"));
-        vbox.getChildren().add(hbox5);
-        hbox5.getChildren().add(checkBox5);
-        hbox5.getChildren().add(new Text(" - 15$"));
-        vbox.getChildren().add(hbox6);
-        hbox6.getChildren().add(checkBox6);
-        hbox6.getChildren().add(new Text(" - 20$"));
-        vbox.getChildren().add(hbox7);
-        hbox7.getChildren().add(checkBox7);
-        hbox7.getChildren().add(new Text(" - 25$"));
-        vbox.getChildren().add(hbox8);
-        hbox8.getChildren().add(checkBox8);
-        hbox8.getChildren().add(new Text(" - 20$"));
+        vbox.getChildren().add(hboxHamburger);
+        hboxHamburger.getChildren().add(checkBoxHamburger);
+        hboxHamburger.getChildren().add(new Text(" - 20$"));
+        vbox.getChildren().add(hboxCheeseburger);
+        hboxCheeseburger.getChildren().add(checkBoxCheeseburger);
+        hboxCheeseburger.getChildren().add(new Text(" - 25$"));
+        vbox.getChildren().add(hboxMcChicken);
+        hboxMcChicken.getChildren().add(checkBoxMcChicken);
+        hboxMcChicken.getChildren().add(new Text(" - 30$"));
+        vbox.getChildren().add(hboxBigTasty);
+        hboxBigTasty.getChildren().add(checkBoxBigTasty);
+        hboxBigTasty.getChildren().add(new Text(" - 40$"));
+        vbox.getChildren().add(hboxFrenchFries);
+        hboxFrenchFries.getChildren().add(checkBoxFrenchFries);
+        hboxFrenchFries.getChildren().add(new Text(" - 15$"));
+        vbox.getChildren().add(hboxPotatoInRusticWay);
+        hboxPotatoInRusticWay.getChildren().add(checkBoxPotatoInRusticWay);
+        hboxPotatoInRusticWay.getChildren().add(new Text(" - 20$"));
+        vbox.getChildren().add(hboxCocaCola);
+        hboxCocaCola.getChildren().add(checkBoxCocaCola);
+        hboxCocaCola.getChildren().add(new Text(" - 25$"));
+        vbox.getChildren().add(hboxFanta);
+        hboxFanta.getChildren().add(checkBoxFanta);
+        hboxFanta.getChildren().add(new Text(" - 20$"));
     }
 }
