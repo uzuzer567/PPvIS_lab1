@@ -10,48 +10,48 @@ import javafx.scene.text.Text;
 
 public class TabFeedback {
     Pane pane = new Pane();
+
     public Pane getPane() {
         tabFeedback();
         return pane;
     }
+
     public void tabFeedback() {
         VBox vbox = new VBox();
         HBox hbox = new HBox();
-        TextField text = new TextField();
-        Button button1 = new Button();
-        Button button2 = new Button();
-        String buttonText = "Ответить";
+        TextField answerToQuestion = new TextField();
+        Button buttonAddNameToButton = new Button();
+        Button buttonSwapButtonNames = new Button();
+        String buttonAddNameToButtonName = "Ответить";
 
         pane.getChildren().add(vbox);
-
         vbox.setPadding(new Insets(10, 30, 10, 30));
         vbox.setSpacing(20);
-
         vbox.getChildren().add(new Text("Вам у нас понравилось?"));
-        vbox.getChildren().add(text);
+        vbox.getChildren().add(answerToQuestion);
         vbox.getChildren().add(hbox);
         hbox.setSpacing(20);
-        button1.setText(buttonText);
-        hbox.getChildren().add(button1);
-        hbox.getChildren().add(button2);
+        buttonAddNameToButton.setText(buttonAddNameToButtonName);
+        hbox.getChildren().add(buttonAddNameToButton);
+        hbox.getChildren().add(buttonSwapButtonNames);
 
-        button1.setOnAction(new EventHandler<ActionEvent>() {
+        buttonAddNameToButton.setOnAction(new EventHandler<ActionEvent>() {
             public void handle(ActionEvent event) {
-                String nameBlankButton;
-                nameBlankButton = text.getText();
-                text.clear();
-                button2.setText(nameBlankButton);
+                String nameEmptyButton;
+                nameEmptyButton = answerToQuestion.getText();
+                answerToQuestion.clear();
+                buttonSwapButtonNames.setText(nameEmptyButton);
             }
         });
 
-        button2.setOnAction(new EventHandler<ActionEvent>() {
+        buttonSwapButtonNames.setOnAction(new EventHandler<ActionEvent>() {
             public void handle(ActionEvent event) {
-                String nameBlankButton;
+                String nameEmptyButton;
                 String nameButtonAnswerTheQuestion;
-                nameBlankButton = button2.getText();
-                nameButtonAnswerTheQuestion = button1.getText();
-                button1.setText(nameBlankButton);
-                button2.setText(nameButtonAnswerTheQuestion);
+                nameEmptyButton = buttonSwapButtonNames.getText();
+                nameButtonAnswerTheQuestion = buttonAddNameToButton.getText();
+                buttonAddNameToButton.setText(nameEmptyButton);
+                buttonSwapButtonNames.setText(nameButtonAnswerTheQuestion);
             }
         });
     }
