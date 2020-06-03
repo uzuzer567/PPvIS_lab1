@@ -9,33 +9,30 @@ import javafx.scene.control.*;
 import javafx.util.Duration;
 
 public class Main extends Application {
-    String title;
-    @Override
+    private String title = "  Добро пожаловать в наше кафе!  ";
+
     public void start(Stage stage) throws Exception {
+        TabQuestionnaire  getTabQuestionnaire = new TabQuestionnaire();
+        TabFeedback getTabFeedback = new TabFeedback();
+        TabPositions getTabPositions = new TabPositions();
+        TabMenu getTabMenu = new TabMenu();
+        TabReceiveOrder getTabReceiveOrder = new TabReceiveOrder();
 
-        TabQuestionnaire  task1 = new TabQuestionnaire ();
-        TabFeedback task2 = new TabFeedback();
-        TabPositions task3 = new TabPositions();
-        TabMenu task4 = new TabMenu();
-        TabReceiveOrder task5 = new TabReceiveOrder();
+        Tab tabQuestionnaire = new Tab("Анкета");
+        Tab tabFeedback = new Tab("Отзыв");
+        Tab tabPositions = new Tab("Должности");
+        Tab tabMenu = new Tab("Меню");
+        Tab tabReceiveOrder = new Tab("Получить заказ");
 
-        Tab tab1 = new Tab("Анкета");
-        Tab tab2 = new Tab("Отзыв");
-        Tab tab3 = new Tab("Должности");
-        Tab tab4 = new Tab("Меню");
-        Tab tab5 = new Tab("Получить заказ");
+        tabQuestionnaire.setContent(getTabQuestionnaire.getPane());
+        tabFeedback.setContent(getTabFeedback.getPane());
+        tabPositions.setContent(getTabPositions.getPane());
+        tabMenu.setContent(getTabMenu.getPane());
+        tabReceiveOrder.setContent(getTabReceiveOrder.getPane());
+        TabPane tabpane = new TabPane(tabQuestionnaire, tabPositions, tabMenu, tabReceiveOrder, tabFeedback);
 
-        tab1.setContent(task1.getPane());
-        tab2.setContent(task2.getPane());
-        tab3.setContent(task3.getPane());
-        tab4.setContent(task4.getPane());
-        tab5.setContent(task5.getPane());
-        TabPane tabpane = new TabPane(tab1, tab3, tab4, tab5, tab2);
-
-        title = "  Добро пожаловать в наше кафе!  ";
         stage.setTitle(title);
-        int last = stage.getTitle().length();
-
+        int lastSymbol = stage.getTitle().length();
         Timeline timeline;
         timeline = new Timeline();
         timeline.setCycleCount(Timeline.INDEFINITE);
@@ -44,7 +41,7 @@ public class Main extends Application {
                         new EventHandler<ActionEvent>() {
                             public void handle(ActionEvent event) {
                                 stage.setTitle(" " + stage.getTitle());
-                                stage.setTitle(stage.getTitle().charAt(last) + stage.getTitle().substring(1, last));
+                                stage.setTitle(stage.getTitle().charAt(lastSymbol) + stage.getTitle().substring(1, lastSymbol));
                             }
                         }
 
@@ -61,4 +58,3 @@ public class Main extends Application {
         launch(args);
     }
 }
-
