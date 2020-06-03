@@ -16,6 +16,7 @@ import javafx.util.Callback;
 
 public class TabReceiveOrder {
     Pane pane = new Pane();
+
     public Pane getPane() {
         tabReceiveOrder();
         return pane;
@@ -23,29 +24,25 @@ public class TabReceiveOrder {
 
     public void tabReceiveOrder() {
         VBox vbox = new VBox();
-        HBox hbox1 = new HBox();
-        HBox hbox2 = new HBox();
-        TextField text = new TextField();
-        Button button1 = new Button("Получить заказ");
-        Button button2 = new Button("Купить салфетку");
-        Button button3 = new Button("Забрать заказ");
-
-        ObservableList<Order> order = FXCollections.observableArrayList();
+        HBox hboxName = new HBox();
+        HBox hboxTableView = new HBox();
+        TextField name = new TextField();
+        Button buttonAddNameToTable = new Button("Получить заказ");
+        Button buttonMoveNameToRightColumn = new Button("Купить салфетку");
+        Button buttonMoveNameToLeftColumn = new Button("Забрать заказ");
+        ObservableList<Order> orderInTable = FXCollections.observableArrayList();
+        TableView<Order> tableViewOrders = new TableView<>(orderInTable);
 
         pane.getChildren().add(vbox);
-
         vbox.setPadding(new Insets(10, 30, 10, 30));
         vbox.setSpacing(20);
         vbox.getChildren().add(new Text("Введите Ваше имя:"));
-        vbox.getChildren().add(hbox1);
-        hbox1.setSpacing(20);
-        hbox1.getChildren().add(text);
-        hbox1.getChildren().add(button1);
-
-        vbox.getChildren().add(hbox2);
-        hbox2.setSpacing(20);
-
-        TableView<Order> tableView = new TableView<>(order);
+        vbox.getChildren().add(hboxName);
+        hboxName.setSpacing(20);
+        hboxName.getChildren().add(name);
+        hboxName.getChildren().add(buttonAddNameToTable);
+        vbox.getChildren().add(hboxTableView);
+        hboxTableView.setSpacing(20);
 
         TableColumn<Order, String> column1 = new TableColumn<>("Выполнен");
         column1.setPrefWidth(125);
@@ -63,46 +60,44 @@ public class TabReceiveOrder {
             }
         });
 
-        tableView.getColumns().addAll(column1, column2);
+        tableViewOrders.getColumns().addAll(column1, column2);
 
-        hbox2.getChildren().add(tableView);
-        hbox2.getChildren().add(button2);
-        hbox2.getChildren().add(button3);
+        hboxTableView.getChildren().add(tableViewOrders);
+        hboxTableView.getChildren().add(buttonMoveNameToRightColumn);
+        hboxTableView.getChildren().add(buttonMoveNameToLeftColumn);
 
-        button1.setOnAction(new EventHandler<ActionEvent>() {
+        buttonAddNameToTable.setOnAction(new EventHandler<ActionEvent>() {
             public void handle(ActionEvent event) {
-                String name = text.getText();
-
-                order.add(new Order(name, null));
-                text.clear();
+                orderInTable.add(new Order(name.getText(), null));
+                name.clear();
             }
         });
 
-        button2.setOnAction(new EventHandler<ActionEvent>() {
+        buttonMoveNameToRightColumn.setOnAction(new EventHandler<ActionEvent>() {
             public void handle(ActionEvent event) {
-                Order selected = tableView.getSelectionModel().getSelectedItem();
-                String name, name1;
-                name = selected.getName();
-                name1 = selected.getEmptyField();
+                Order selectedOrder = tableViewOrders.getSelectionModel().getSelectedItem();
+                String name, nameEmpty;
+                name = selectedOrder.getName();
+                nameEmpty = selectedOrder.getEmptyField();
                 if(name == null) {
                     return;
                 }
-                selected.emptyFieldProperty().setValue(name);
-                selected.nameProperty().setValue(name1);
+                selectedOrder.emptyFieldProperty().setValue(name);
+                selectedOrder.nameProperty().setValue(nameEmpty);
             }
         });
 
-        button3.setOnAction(new EventHandler<ActionEvent>() {
+        buttonMoveNameToLeftColumn.setOnAction(new EventHandler<ActionEvent>() {
             public void handle(ActionEvent event) {
-                Order selected = tableView.getSelectionModel().getSelectedItem();
-                String name, name1;
-                name = selected.getName();
-                name1 = selected.getEmptyField();
-                if(name1 == null) {
+                Order selectedOrder = tableViewOrders.getSelectionModel().getSelectedItem();
+                String name, nameEmpty;
+                name = selectedOrder.getName();
+                nameEmpty = selectedOrder.getEmptyField();
+                if(nameEmpty == null) {
                     return;
                 }
-                selected.emptyFieldProperty().setValue(name);
-                selected.nameProperty().setValue(name1);
+                selectedOrder.emptyFieldProperty().setValue(name);
+                selectedOrder.nameProperty().setValue(nameEmpty);
             }
         });
 
