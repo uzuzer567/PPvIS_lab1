@@ -2,8 +2,8 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
 public class Order {
-    StringProperty name;
-    StringProperty emptyField;
+    private StringProperty name;
+    private StringProperty emptyField;
 
     Order(String name, String emptyField) {
         this.name = new SimpleStringProperty(this, "name", name);
