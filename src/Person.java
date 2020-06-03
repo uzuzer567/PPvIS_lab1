@@ -1,16 +1,17 @@
 public class Person {
     private String name;
-    private int number;
-    Person(String name, int number) {
+    private int numberPhone;
+
+    Person(String name, int numberPhone) {
         this.name = name;
-        this.number = number;
+        this.numberPhone = numberPhone;
     };
 
-    public boolean equals(Object obj) {
-        if (obj == null) return false;
-        if (obj instanceof Person) {
-            Person person = (Person) obj;
-            if (!person.getName().equals(name) && person.getNumber() != number) {
+    public boolean equals(Object object) {
+        if (object == null) return false;
+        if (object instanceof Person) {
+            Person person = (Person) object;
+            if (!person.getName().equals(name) && person.getNumber() != numberPhone) {
                 return false;
             }
             return true;
@@ -27,6 +28,6 @@ public class Person {
     };
 
     public int getNumber() {
-        return number;
+        return numberPhone;
     };
 }
